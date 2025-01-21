@@ -12,6 +12,7 @@ interface VoteCount {
 export default function VotingApp() {
   const [votes, setVotes] = useState<VoteCount>({ "Bruno do Java": 0, "Bruno do C#": 0 })
   const [isVoting, setIsVoting] = useState(false)
+  const [hasVoted, setHasVoted] = useState(false)
 
   useEffect(() => {
     const fetchVotes = async () => {
@@ -28,11 +29,15 @@ export default function VotingApp() {
       }
     }
 
+    // Verificar se o usuário já votou
+    const hasVotedBefore = localStorage.getItem("hasVoted") === "true"
+    setHasVoted(hasVotedBefore)
+
     fetchVotes()
   }, [])
 
   const handleVote = async (candidate: keyof VoteCount) => {
-    if (isVoting) return
+    if (isVoting || hasVoted) return
     setIsVoting(true)
     try {
       const newVotes = await submitVote(candidate)
@@ -41,6 +46,10 @@ export default function VotingApp() {
         "Bruno do C#": newVotes["Bruno do C#"] || 0,
       }
       setVotes(cleanedVotes)
+
+      // Marcar como votado no localStorage
+      localStorage.setItem("hasVoted", "true")
+      setHasVoted(true)
     } catch (error) {
       console.error("Erro ao enviar o voto:", error)
     } finally {
@@ -69,13 +78,17 @@ export default function VotingApp() {
               <button
                 key={candidate}
                 onClick={() => handleVote(candidate as keyof VoteCount)}
-                disabled={isVoting}
+                disabled={isVoting || hasVoted}
                 className="bg-red-700 hover:bg-red-600 text-yellow-500 font-bold py-4 px-6 rounded-lg border-2 border-yellow-500 transition-colors disabled:opacity-50"
               >
                 {candidate}
               </button>
             ))}
           </div>
+
+          {hasVoted && (
+            <p className="text-yellow-500 text-center mt-4">Você já votou! Obrigado por participar.</p>
+          )}
         </div>
 
         <div className="bg-red-800 p-6 rounded-lg shadow-lg">
