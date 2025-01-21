@@ -62,6 +62,21 @@ export default function VotingApp() {
 
   const totalVotes = votes["Bruno do Java"] + votes["Bruno do C#"] + votes["𝕹𝖆𝖑𝖚𝖍"]
 
+  const candidates = [
+    {
+      name: "Bruno do Java",
+      imageUrl: "/BrunoDoJava.jpg",  
+    },
+    {
+      name: "Bruno do C#",
+      imageUrl: "/BrudoDoCSharp.jpg", 
+    },
+    {
+      name: "𝕹𝖆𝖑𝖚𝖍",
+      imageUrl: "/Naluh.jpg", 
+    },
+  ]
+
   return (
     <div className="min-h-screen bg-red-900">
       <div className="container mx-auto px-4 py-8">
@@ -77,15 +92,21 @@ export default function VotingApp() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {["Bruno do Java", "Bruno do C#", "𝕹𝖆𝖑𝖚𝖍"].map((candidate) => (
-              <button
-                key={candidate}
-                onClick={() => handleVote(candidate as keyof VoteCount)}
-                disabled={isVoting || hasVoted}
-                className="bg-red-700 hover:bg-red-600 text-yellow-500 font-bold py-4 px-6 rounded-lg border-2 border-yellow-500 transition-colors disabled:opacity-50"
-              >
-                {candidate}
-              </button>
+            {candidates.map((candidate) => (
+              <div key={candidate.name} className="text-center">
+                <img
+                  src={candidate.imageUrl}
+                  alt={candidate.name}
+                  className="w-24 h-24 rounded-full mx-auto mb-4"
+                />
+                <button
+                  onClick={() => handleVote(candidate.name as keyof VoteCount)}
+                  disabled={isVoting || hasVoted}
+                  className="bg-red-700 hover:bg-red-600 text-yellow-500 font-bold py-4 px-6 rounded-lg border-2 border-yellow-500 transition-colors disabled:opacity-50"
+                >
+                  {candidate.name}
+                </button>
+              </div>
             ))}
           </div>
 
