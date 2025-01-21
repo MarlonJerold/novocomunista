@@ -7,7 +7,6 @@ import { Hammer } from "lucide-react"
 interface VoteCount {
   "Bruno do Java": number
   "Bruno do C#": number
-  _id?: string
 }
 
 export default function VotingApp() {
@@ -18,7 +17,11 @@ export default function VotingApp() {
     const fetchVotes = async () => {
       try {
         const initialVotes = await getVotes()
-        setVotes(initialVotes as VoteCount)  // Removido o _id
+        const cleanedVotes: VoteCount = {
+          "Bruno do Java": initialVotes["Bruno do Java"] || 0,
+          "Bruno do C#": initialVotes["Bruno do C#"] || 0,
+        }
+        setVotes(cleanedVotes)
       } catch (error) {
         console.error("Erro ao buscar os votos:", error)
         setVotes({ "Bruno do Java": 0, "Bruno do C#": 0 })
@@ -28,12 +31,16 @@ export default function VotingApp() {
     fetchVotes()
   }, [])
 
-  const handleVote = async (candidate: keyof Omit<VoteCount, "_id">) => {
+  const handleVote = async (candidate: keyof VoteCount) => {
     if (isVoting) return
     setIsVoting(true)
     try {
       const newVotes = await submitVote(candidate)
-      setVotes(newVotes as VoteCount)  // Removido o _id
+      const cleanedVotes: VoteCount = {
+        "Bruno do Java": newVotes["Bruno do Java"] || 0,
+        "Bruno do C#": newVotes["Bruno do C#"] || 0,
+      }
+      setVotes(cleanedVotes)
     } catch (error) {
       console.error("Erro ao enviar o voto:", error)
     } finally {
@@ -61,7 +68,7 @@ export default function VotingApp() {
             {["Bruno do Java", "Bruno do C#"].map((candidate) => (
               <button
                 key={candidate}
-                onClick={() => handleVote(candidate as keyof Omit<VoteCount, "_id">)}
+                onClick={() => handleVote(candidate as keyof VoteCount)}
                 disabled={isVoting}
                 className="bg-red-700 hover:bg-red-600 text-yellow-500 font-bold py-4 px-6 rounded-lg border-2 border-yellow-500 transition-colors disabled:opacity-50"
               >
@@ -93,7 +100,8 @@ export default function VotingApp() {
             </div>
           ))}
 
-          <p className="text-yellow-500 text-center mt-4">Total de camaradas que votaram: {totalVotes}</p>
+          <p className="text-yellow-500 text-center mt-4">Total de camaradas que votaram: {totalVotes} </p>
+          <p className="text-yellow-500 text-center mt-4">Vote só uma vez plis</p>
         </div>
       </div>
     </div>
