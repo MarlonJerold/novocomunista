@@ -7,10 +7,11 @@ import { Hammer } from "lucide-react"
 interface VoteCount {
   "Bruno do Java": number
   "Bruno do C#": number
+  "𝕹𝖆𝖑𝖚𝖍": number
 }
 
 export default function VotingApp() {
-  const [votes, setVotes] = useState<VoteCount>({ "Bruno do Java": 0, "Bruno do C#": 0 })
+  const [votes, setVotes] = useState<VoteCount>({ "Bruno do Java": 0, "Bruno do C#": 0, "𝕹𝖆𝖑𝖚𝖍":0 })
   const [isVoting, setIsVoting] = useState(false)
   const [hasVoted, setHasVoted] = useState(false)
 
@@ -21,11 +22,12 @@ export default function VotingApp() {
         const cleanedVotes: VoteCount = {
           "Bruno do Java": initialVotes["Bruno do Java"] || 0,
           "Bruno do C#": initialVotes["Bruno do C#"] || 0,
+          "𝕹𝖆𝖑𝖚𝖍": initialVotes["𝕹𝖆𝖑𝖚𝖍"] || 0,
         }
         setVotes(cleanedVotes)
       } catch (error) {
         console.error("Erro ao buscar os votos:", error)
-        setVotes({ "Bruno do Java": 0, "Bruno do C#": 0 })
+        setVotes({ "Bruno do Java": 0, "Bruno do C#": 0, "𝕹𝖆𝖑𝖚𝖍":0 })
       }
     }
 
@@ -44,6 +46,7 @@ export default function VotingApp() {
       const cleanedVotes: VoteCount = {
         "Bruno do Java": newVotes["Bruno do Java"] || 0,
         "Bruno do C#": newVotes["Bruno do C#"] || 0,
+        "𝕹𝖆𝖑𝖚𝖍": newVotes["𝕹𝖆𝖑𝖚𝖍"] || 0,
       }
       setVotes(cleanedVotes)
 
@@ -57,7 +60,7 @@ export default function VotingApp() {
     }
   }
 
-  const totalVotes = votes["Bruno do Java"] + votes["Bruno do C#"]
+  const totalVotes = votes["Bruno do Java"] + votes["Bruno do C#"] + votes["𝕹𝖆𝖑𝖚𝖍"]
 
   return (
     <div className="min-h-screen bg-red-900">
@@ -74,7 +77,7 @@ export default function VotingApp() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {["Bruno do Java", "Bruno do C#"].map((candidate) => (
+            {["Bruno do Java", "Bruno do C#", "𝕹𝖆𝖑𝖚𝖍"].map((candidate) => (
               <button
                 key={candidate}
                 onClick={() => handleVote(candidate as keyof VoteCount)}

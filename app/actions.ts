@@ -6,6 +6,7 @@ export interface VoteCount {
   _id?: string;
   "Bruno do Java": number;
   "Bruno do C#": number;
+  "𝕹𝖆𝖑𝖚𝖍": number;
 }
 
 export async function getVotes(): Promise<VoteCount> {
@@ -14,7 +15,7 @@ export async function getVotes(): Promise<VoteCount> {
   
   const votes = await collection.findOne({ _id: "vote_count" });
   
-  return votes || { _id: "vote_count", "Bruno do Java": 0, "Bruno do C#": 0 };
+  return votes || { _id: "vote_count", "Bruno do Java": 0, "Bruno do C#": 0, "𝕹𝖆𝖑𝖚𝖍":0 };
 }
 
 export async function submitVote(candidate: keyof Omit<VoteCount, "_id">): Promise<VoteCount> {
