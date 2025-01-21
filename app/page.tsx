@@ -18,8 +18,7 @@ export default function VotingApp() {
     const fetchVotes = async () => {
       try {
         const initialVotes = await getVotes()
-        const { _id, ...votesWithoutId } = initialVotes
-        setVotes(votesWithoutId as VoteCount)
+        setVotes(initialVotes as VoteCount)  // Removido o _id
       } catch (error) {
         console.error("Erro ao buscar os votos:", error)
         setVotes({ "Bruno do Java": 0, "Bruno do C#": 0 })
@@ -34,8 +33,7 @@ export default function VotingApp() {
     setIsVoting(true)
     try {
       const newVotes = await submitVote(candidate)
-      const { _id, ...votesWithoutId } = newVotes
-      setVotes(votesWithoutId as VoteCount)
+      setVotes(newVotes as VoteCount)  // Removido o _id
     } catch (error) {
       console.error("Erro ao enviar o voto:", error)
     } finally {
