@@ -17,7 +17,7 @@ O projeto foi usado:
 
 Deseja participar como candidato para as pessoas votarem em você como o novo líder comunista da Bolha dev?
 
-Você precisa ter o nome instalado, e fazer aquele ```run node dev```
+Você precisa ter o nome instalado, e fazer aquele ```npm run dev```
 
 Mas você vai precisar criar um arquivo ```.env``` passando a variável de ambiente de seu MongoDB.
 
