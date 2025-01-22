@@ -31,7 +31,6 @@ export default function VotingApp() {
       }
     }
 
-    // Verificar se o usuário já votou
     const hasVotedBefore = localStorage.getItem("hasVoted") === "true"
     setHasVoted(hasVotedBefore)
 
