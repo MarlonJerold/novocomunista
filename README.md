@@ -1,36 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛠 Eleição do Líder Comunista da Bolha Dev do Bluesky
+Bem-vindo ao repositório do Eleição do Líder Comunista! Este projeto é uma aplicação web divertida para simular eleições dentro da bolha dev, com uma interface amigável e bem humorada.
 
-## Getting Started
+## Sobre o Projeto
+A eleição permite que os camaradas escolham o próximo líder comunista da bolha dev no Bluesky. A página apresenta:
 
-First, run the development server:
+- Candidatos com avatares personalizados
+- Visualização de resultados em tempo real
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+O projeto foi usado: 
+- MongoDB
+- React
+- Next
+- Typescript
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Deseja participar como candidato para as pessoas votarem em você como o novo líder comunista da Bolha dev?
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Contato: marlonjerold@outlook.com.br
