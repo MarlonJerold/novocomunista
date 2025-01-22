@@ -1,6 +1,8 @@
 # 🛠 Eleição do Líder Comunista da Bolha Dev do Bluesky
 Bem-vindo ao repositório do Eleição do Líder Comunista! Este projeto é uma aplicação web divertida para simular eleições dentro da bolha dev, com uma interface amigável e bem humorada.
 
+Link: https://novocomunista.vercel.app/
+
 ## Sobre o Projeto
 A eleição permite que os camaradas escolham o próximo líder comunista da bolha dev no Bluesky. A página apresenta:
 
