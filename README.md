@@ -25,6 +25,10 @@ O sistema está criado para que ao rodar, seja criado uma coleção automaticame
 
 Ao iniciar o mongo e criar um ```DataBase``` vai ser lançado uma ```String de conexão``` é ela que você vai passar no arquivo .env
 
+Sua String de conexão é algo como
+
+```DATABASE_URL=mongodb+srv://<username>:<password>@cluster0.mongodb.net/<database_name>?retryWrites=true&w=majority```
+
 No arquivo ```page``` tem a interface ```VoteCount```, nela tem nosso componente que você deve alterar para seu contexto de votação com base no que você precisa.
 
 Boa sorte na sua votação e qualquer dúvida
